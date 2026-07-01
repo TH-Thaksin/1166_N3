@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1166 Academy · Mô phỏng cuộc gọi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">1166</div>
+      <div>
+        <div class="brand-name">1166 Academy</div>
+        <div class="brand-tag">Đào tạo ĐTV tổng đài · N3</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+        Trang chủ
+      </a>
+      <a href="cam-nang.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+        Cẩm nang nghiệp vụ
+      </a>
+      <a href="mo-phong.html" class="nav-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+        Mô phỏng cuộc gọi
+      </a>
+      <a href="san-pham.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+        Sản phẩm Camera
+      </a>
+      <a href="luyen-thi.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+        Luyện thi
+      </a>
+      <a href="tien-do.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+        Tiến độ onboard
+      </a>
+    </nav>
+    <div class="sidebar-footer">Tài liệu nội bộ · Tổng đài 18001166<br>Bản N3 · Cập nhật 07/2026</div>
+  </aside>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="page-head reveal">
+        <span class="eyebrow eyebrow-brand">MÔ PHỎNG CUỘC GỌI</span>
+        <h1 class="heading-1">50 tình huống thực tế <span class="grad-text">đơn hàng &amp; khiếu nại</span></h1>
+        <p class="lead">Trích nguyên văn từ tài liệu "Tình huống Tiếp nhận đơn hàng" (20 tình huống) và "Tình huống KH khiếu nại" (30 tình huống). Chọn 1 tình huống để tự luyện: đọc bối cảnh, nghĩ câu trả lời của bạn, rồi bấm xem câu mẫu/hướng xử lý thật của ĐTV theo từng lượt.</p>
+      </div>
+
+      <div class="card reveal" style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <span class="stat-label">ĐÃ LUYỆN</span>
+        <span id="practiceCount" style="font-size:14px;font-weight:700;color:#fff">0/50 tình huống</span>
+      </div>
+
+      <div class="filter-bar reveal" id="filterBar"></div>
+
+      <div class="scenario-grid reveal" id="scenarioGrid"></div>
+      <div class="empty-state" id="emptyState" style="display:none">Không có tình huống nào trong nhóm này.</div>
+
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+      Trang chủ
+    </a>
+    <a href="cam-nang.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+      Cẩm nang
+    </a>
+    <a href="mo-phong.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+      Mô phỏng
+    </a>
+    <a href="san-pham.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+      Sản phẩm
+    </a>
+    <a href="luyen-thi.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+      Luyện thi
+    </a>
+    <a href="tien-do.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+      Tiến độ
+    </a>
+  </nav>
+
+</div>
+
+<script src="assets/data.js"></script>
+<script>
+  const ALL = [
+    ...SCENARIOS_ORDER.map(s => ({...s, type:'order'})),
+    ...SCENARIOS_COMPLAINT.map(s => ({...s, type:'complaint'})),
+  ];
+  const GROUPS = ['Tất cả', ...ORDER_GROUPS, ...COMPLAINT_GROUPS];
+  let activeGroup = 'Tất cả';
+
+  const filterBar = document.getElementById('filterBar');
+  filterBar.innerHTML = GROUPS.map(g => {
+    const count = g === 'Tất cả' ? ALL.length : ALL.filter(s => s.group === g).length;
+    return `<button class="filter-chip ${g === activeGroup ? 'active' : ''}" data-group="${g}">${g} <span class="text-dim">(${count})</span></button>`;
+  }).join('');
+
+  filterBar.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-chip');
+    if (!btn) return;
+    activeGroup = btn.dataset.group;
+    filterBar.querySelectorAll('.filter-chip').forEach(b => b.classList.toggle('active', b.dataset.group === activeGroup));
+    render();
+  });
+
+  const DONE_KEY = 'academy1166-luyen-n3';
+  let doneState = {};
+  try { doneState = JSON.parse(localStorage.getItem(DONE_KEY)) || {}; } catch (e) { doneState = {}; }
+
+  function cardOrder(s) {
+    const done = !!doneState['order-' + s.id];
+    return `
+      <a href="mo-phong-luyen.html?type=order&id=${s.id}" class="card card-hover scenario-card" style="display:block;text-decoration:none;color:inherit">
+        <div class="scenario-head">
+          <span class="scenario-id">ĐH-${String(s.id).padStart(2,'0')}</span>
+          <span class="tag">${s.group}</span>
+          ${done ? '<span class="badge badge-ok">Đã luyện</span>' : ''}
+        </div>
+        <div class="scenario-title">${s.title}</div>
+        <div class="scenario-block"><b>Nghiệp vụ:</b> ${s.note}</div>
+        <span class="chapter-cta">Luyện tình huống này
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>`;
+  }
+
+  function cardComplaint(s) {
+    const done = !!doneState['complaint-' + s.id];
+    return `
+      <a href="mo-phong-luyen.html?type=complaint&id=${s.id}" class="card card-hover scenario-card" style="display:block;text-decoration:none;color:inherit">
+        <div class="scenario-head">
+          <span class="scenario-id">KN-${s.id}</span>
+          <span class="tag">${s.group}</span>
+          ${done ? '<span class="badge badge-ok">Đã luyện</span>' : ''}
+        </div>
+        <div class="scenario-title">${s.title}</div>
+        <div class="scenario-block"><b>Nội dung sự việc:</b> ${s.content}</div>
+        <span class="chapter-cta">Luyện tình huống này (2 lượt)
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>`;
+  }
+
+  function updatePracticeCount() {
+    const done = ALL.filter(s => doneState[s.type + '-' + s.id]).length;
+    document.getElementById('practiceCount').textContent = `${done}/${ALL.length} tình huống`;
+  }
+
+  function render() {
+    const grid = document.getElementById('scenarioGrid');
+    const list = activeGroup === 'Tất cả' ? ALL : ALL.filter(s => s.group === activeGroup);
+    grid.innerHTML = list.map(s => s.type === 'order' ? cardOrder(s) : cardComplaint(s)).join('');
+    document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
+    updatePracticeCount();
+  }
+  render();
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

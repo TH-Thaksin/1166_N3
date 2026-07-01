@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1166 Academy · Tiến độ onboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">1166</div>
+      <div>
+        <div class="brand-name">1166 Academy</div>
+        <div class="brand-tag">Đào tạo ĐTV tổng đài · N3</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+        Trang chủ
+      </a>
+      <a href="cam-nang.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+        Cẩm nang nghiệp vụ
+      </a>
+      <a href="mo-phong.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+        Mô phỏng cuộc gọi
+      </a>
+      <a href="san-pham.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+        Sản phẩm Camera
+      </a>
+      <a href="luyen-thi.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+        Luyện thi
+      </a>
+      <a href="tien-do.html" class="nav-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+        Tiến độ onboard
+      </a>
+    </nav>
+    <div class="sidebar-footer">Tài liệu nội bộ · Tổng đài 18001166<br>Bản N3 · Cập nhật 07/2026</div>
+  </aside>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="page-head reveal">
+        <span class="eyebrow eyebrow-brand">TIẾN ĐỘ ONBOARD</span>
+        <h1 class="heading-1">Checklist <span class="grad-text">7 ngày làm quen nghiệp vụ</span></h1>
+        <p class="lead">Tự đánh dấu các đầu việc đã hoàn thành. Tiến độ được lưu ngay trên trình duyệt này.</p>
+      </div>
+
+      <div class="card reveal" style="padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span class="stat-label">TỔNG TIẾN ĐỘ</span>
+          <span id="progressPct" style="font-size:15px;font-weight:700;color:#fff">0%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+
+      <div id="dayList" class="reveal" style="margin-top:24px"></div>
+
+      <div style="margin-top:20px;text-align:right">
+        <button class="btn btn-outline" id="resetBtn" style="font-size:12.5px">Đặt lại tiến độ</button>
+      </div>
+
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+      Trang chủ
+    </a>
+    <a href="cam-nang.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+      Cẩm nang
+    </a>
+    <a href="mo-phong.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+      Mô phỏng
+    </a>
+    <a href="san-pham.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+      Sản phẩm
+    </a>
+    <a href="luyen-thi.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+      Luyện thi
+    </a>
+    <a href="tien-do.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+      Tiến độ
+    </a>
+  </nav>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="assets/data.js"></script>
+<script>
+  const STORE_KEY = 'academy1166-progress-n3';
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { state = {}; }
+
+  function isDone(day, idx, seedDone) {
+    const key = day + '-' + idx;
+    return key in state ? state[key] : seedDone;
+  }
+  function setDone(day, idx, val) {
+    state[day + '-' + idx] = val;
+    localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  }
+
+  const dayList = document.getElementById('dayList');
+
+  function renderDays() {
+    dayList.innerHTML = ROADMAP.map(r => `
+      <div class="card" style="padding:20px 24px;margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div>
+            <div class="roadmap-day">Ngày ${r.day}</div>
+            <h3 class="heading-3" style="margin-top:4px">${r.title}</h3>
+            <div class="scenario-block" style="margin-top:2px">${r.desc}</div>
+          </div>
+        </div>
+        <div style="margin-top:6px">
+          ${r.tasks.map((t, idx) => {
+            const done = isDone(r.day, idx, t.done);
+            return `
+            <div class="check-item">
+              <div class="check-box ${done ? 'done' : ''}" data-day="${r.day}" data-idx="${idx}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <div>
+                <div class="check-label ${done ? 'done' : ''}">${t.t}</div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function totalStats() {
+    let total = 0, done = 0;
+    ROADMAP.forEach(r => r.tasks.forEach((t, idx) => {
+      total++;
+      if (isDone(r.day, idx, t.done)) done++;
+    }));
+    return { total, done };
+  }
+
+  function updateProgress() {
+    const { total, done } = totalStats();
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById('progressPct').textContent = pct + '%';
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  function renderAll() {
+    renderDays();
+    updateProgress();
+  }
+  renderAll();
+
+  dayList.addEventListener('click', e => {
+    const box = e.target.closest('.check-box');
+    if (!box) return;
+    const day = box.dataset.day, idx = box.dataset.idx;
+    const seedDone = ROADMAP.find(r => String(r.day) === day).tasks[idx].done;
+    const current = isDone(day, idx, seedDone);
+    setDone(day, idx, !current);
+    renderAll();
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    state = {};
+    localStorage.removeItem(STORE_KEY);
+    renderAll();
+  });
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

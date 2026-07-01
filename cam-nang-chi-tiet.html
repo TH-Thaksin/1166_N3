@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1166 Academy · Cẩm nang nghiệp vụ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">1166</div>
+      <div>
+        <div class="brand-name">1166 Academy</div>
+        <div class="brand-tag">Đào tạo ĐTV tổng đài · N3</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+        Trang chủ
+      </a>
+      <a href="cam-nang.html" class="nav-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+        Cẩm nang nghiệp vụ
+      </a>
+      <a href="mo-phong.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+        Mô phỏng cuộc gọi
+      </a>
+      <a href="san-pham.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+        Sản phẩm Camera
+      </a>
+      <a href="luyen-thi.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+        Luyện thi
+      </a>
+      <a href="tien-do.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+        Tiến độ onboard
+      </a>
+    </nav>
+    <div class="sidebar-footer">Tài liệu nội bộ · Tổng đài 18001166<br>Bản N3 · Cập nhật 07/2026</div>
+  </aside>
+
+  <main class="main">
+    <div class="container" id="pageContainer" style="display:none">
+
+      <a href="cam-nang.html" class="crumb reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Quay về danh sách chủ đề
+      </a>
+
+      <div class="page-head reveal">
+        <span class="eyebrow eyebrow-brand" id="chEyebrow"></span>
+        <h1 class="heading-1" id="chTitle"></h1>
+        <p class="lead" id="chSub"></p>
+        <div class="chapter-meta" style="margin-top:16px" id="chMeta"></div>
+      </div>
+
+      <div class="card reveal" style="padding:22px 24px">
+        <p id="chIntro" style="font-size:14.5px;color:#cbd5e1;line-height:1.75"></p>
+
+        <div class="callout" id="chCallout" style="display:none">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          </div>
+          <div class="callout-body"><b>Lưu ý bắt buộc:</b> <span id="chCalloutText"></span></div>
+        </div>
+
+        <div class="table-wrap" id="chTableWrap" style="display:none">
+          <table class="data-table" id="chTable"></table>
+        </div>
+
+        <div id="chProductsWrap" style="display:none">
+          <h3 class="heading-3" style="margin-top:22px">Bảng sản phẩm Camera</h3>
+          <div class="product-grid" id="chProducts" style="margin-top:14px"></div>
+        </div>
+
+        <div style="margin-top:22px" id="chPts"></div>
+
+        <div class="term-list" id="chTerms" style="display:none"></div>
+
+        <h3 class="heading-3" style="margin-top:26px">Tài liệu gốc</h3>
+        <div class="accordion-files" style="margin-top:12px" id="chFiles"></div>
+      </div>
+
+      <div class="chapter-nav reveal" id="chNav"></div>
+
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+      Trang chủ
+    </a>
+    <a href="cam-nang.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+      Cẩm nang
+    </a>
+    <a href="mo-phong.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+      Mô phỏng
+    </a>
+    <a href="san-pham.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+      Sản phẩm
+    </a>
+    <a href="luyen-thi.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+      Luyện thi
+    </a>
+    <a href="tien-do.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+      Tiến độ
+    </a>
+  </nav>
+
+</div>
+
+<script src="assets/data.js"></script>
+<script>
+  const READ_KEY = 'academy1166-camnang-read-n3';
+  let readState = {};
+  try { readState = JSON.parse(localStorage.getItem(READ_KEY)) || {}; } catch (e) { readState = {}; }
+
+  const params = new URLSearchParams(location.search);
+  const idx = parseInt(params.get('c'), 10) - 1;
+  const t = TOPICS[idx];
+
+  if (!t) {
+    document.querySelector('.container').innerHTML = '<p class="lead">Không tìm thấy chương này. <a href="cam-nang.html" style="color:var(--brand);font-weight:600">Quay về danh sách chủ đề</a></p>';
+    document.getElementById('pageContainer').style.display = 'block';
+  } else {
+    readState[t.num] = true;
+    localStorage.setItem(READ_KEY, JSON.stringify(readState));
+
+    document.title = `1166 Academy · Chương §${idx + 1} — ${t.title}`;
+    document.getElementById('chEyebrow').textContent = `CHỦ ĐỀ ${t.num} · CHƯƠNG §${idx + 1}`;
+    document.getElementById('chTitle').innerHTML = `${t.title}`;
+    document.getElementById('chSub').textContent = t.sub;
+    document.getElementById('chIntro').textContent = t.intro;
+
+    function wordCount(s) { return s ? s.trim().split(/\s+/).length : 0; }
+    const words = wordCount(t.intro) + t.pts.reduce((s, p) => s + wordCount(p), 0) + (t.table ? t.table.rows.flat().reduce((s, c) => s + wordCount(c), 0) : 0);
+    const mins = Math.max(2, Math.round(words / 110));
+    document.getElementById('chMeta').innerHTML = `<span>~${mins} phút đọc</span><span>·</span><span>${t.files.length} tài liệu gốc</span>`;
+
+    if (t.highlight) {
+      document.getElementById('chCallout').style.display = 'flex';
+      document.getElementById('chCalloutText').textContent = t.highlight;
+    }
+
+    if (t.table) {
+      document.getElementById('chTableWrap').style.display = 'block';
+      document.getElementById('chTable').innerHTML = `
+        <thead><tr>${t.table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>${t.table.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+      `;
+    }
+
+    if (t.products) {
+      document.getElementById('chProductsWrap').style.display = 'block';
+      document.getElementById('chProducts').innerHTML = CAMERA_PRODUCTS.map(p => `
+        <div class="card product-card">
+          <span class="product-code">${p.code}</span>
+          <div class="product-title">${p.name}</div>
+          <div class="product-row"><span>Hình thức lưu trữ</span><span>${p.feature}</span></div>
+          <div class="product-row"><span>Lưu ý tư vấn</span><span>${p.note}</span></div>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('chPts').innerHTML = t.pts.map(p => `
+      <div class="check-item" style="border-bottom:1px solid var(--line-soft)">
+        <div class="check-box done" style="cursor:default">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="check-label" style="font-weight:500;font-size:13.5px;color:#cbd5e1;text-decoration:none">${p}</div>
+      </div>
+    `).join('');
+
+    if (t.terms && t.terms.length) {
+      document.getElementById('chTerms').style.display = 'flex';
+      document.getElementById('chTerms').innerHTML = `<h3 class="heading-3" style="margin-bottom:4px">Thuật ngữ</h3>` +
+        t.terms.map(term => `<div class="term-row"><span class="term-code">${term.t}</span><span class="term-desc">${term.d}</span></div>`).join('');
+    }
+
+    document.getElementById('chFiles').innerHTML = t.files.map(f => `<span class="chip chip-soft">${f}</span>`).join('');
+
+    const prev = TOPICS[idx - 1];
+    const next = TOPICS[idx + 1];
+    document.getElementById('chNav').innerHTML = `
+      ${prev ? `<a href="cam-nang-chi-tiet.html?c=${idx}" class="card card-hover chapter-nav-link"><div class="chapter-nav-dir">← Chương trước</div><div class="chapter-nav-title">§${idx} — ${prev.title}</div></a>` : '<div></div>'}
+      ${next ? `<a href="cam-nang-chi-tiet.html?c=${idx + 2}" class="card card-hover chapter-nav-link next"><div class="chapter-nav-dir">Chương tiếp theo →</div><div class="chapter-nav-title">§${idx + 2} — ${next.title}</div></a>` : '<div></div>'}
+    `;
+
+    document.getElementById('pageContainer').style.display = 'block';
+  }
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

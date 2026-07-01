@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1166 Academy · Luyện tình huống</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">1166</div>
+      <div>
+        <div class="brand-name">1166 Academy</div>
+        <div class="brand-tag">Đào tạo ĐTV tổng đài · N3</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+        Trang chủ
+      </a>
+      <a href="cam-nang.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+        Cẩm nang nghiệp vụ
+      </a>
+      <a href="mo-phong.html" class="nav-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+        Mô phỏng cuộc gọi
+      </a>
+      <a href="san-pham.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+        Sản phẩm Camera
+      </a>
+      <a href="luyen-thi.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+        Luyện thi
+      </a>
+      <a href="tien-do.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+        Tiến độ onboard
+      </a>
+    </nav>
+    <div class="sidebar-footer">Tài liệu nội bộ · Tổng đài 18001166<br>Bản N3 · Cập nhật 07/2026</div>
+  </aside>
+
+  <main class="main">
+    <div class="container" id="pageContainer" style="display:none">
+
+      <a href="mo-phong.html" class="crumb reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Quay về danh sách tình huống
+      </a>
+
+      <div class="page-head reveal">
+        <span class="eyebrow eyebrow-brand" id="scEyebrow"></span>
+        <h1 class="heading-1" id="scTitle"></h1>
+        <p class="lead" id="scNote"></p>
+      </div>
+
+      <div class="card reveal" style="padding:22px 24px">
+        <span class="turn-badge" id="turnBadge"></span>
+
+        <div class="kh-bubble">
+          <div class="kh-bubble-label" id="ctxLabel"></div>
+          <div class="kh-bubble-text" id="ctxText"></div>
+        </div>
+
+        <div class="draft-box" id="draftBox">
+          <label class="draft-label">Nếu là bạn, bạn sẽ phản hồi/xử lý thế nào? (chỉ để tự luyện, không lưu lại)</label>
+          <textarea class="draft-textarea" id="draftInput" placeholder="Gõ câu trả lời của bạn ở đây trước khi xem câu mẫu…"></textarea>
+        </div>
+
+        <div class="practice-actions">
+          <button class="btn btn-primary" id="revealBtn">Xem câu mẫu / hướng xử lý thật</button>
+          <button class="btn btn-outline" id="nextTurnBtn" style="display:none">Lượt tiếp theo →</button>
+        </div>
+
+        <div class="reveal-answer" id="answerBox" style="display:none">
+          <div class="reveal-answer-label" id="answerLabel"></div>
+          <div class="reveal-answer-text" id="answerText"></div>
+        </div>
+
+        <div class="practice-done" id="doneSection" style="display:none">
+          <div class="check-box" id="doneToggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div class="check-label" id="doneLabel">Đánh dấu đã luyện tình huống này</div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px">
+        <a href="mo-phong.html" class="btn btn-outline">Chọn tình huống khác</a>
+      </div>
+
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+      Trang chủ
+    </a>
+    <a href="cam-nang.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2Z"/><path d="M12 6v14"/></svg>
+      Cẩm nang
+    </a>
+    <a href="mo-phong.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg>
+      Mô phỏng
+    </a>
+    <a href="san-pham.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+      Sản phẩm
+    </a>
+    <a href="luyen-thi.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+      Luyện thi
+    </a>
+    <a href="tien-do.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/></svg>
+      Tiến độ
+    </a>
+  </nav>
+
+</div>
+
+<script src="assets/data.js"></script>
+<script>
+  const DONE_KEY = 'academy1166-luyen-n3';
+  let doneState = {};
+  try { doneState = JSON.parse(localStorage.getItem(DONE_KEY)) || {}; } catch (e) { doneState = {}; }
+
+  const params = new URLSearchParams(location.search);
+  const type = params.get('type');
+  const idParam = params.get('id');
+
+  let s = null, turns = [], group = '', title = '', noteLine = '', ctxLabel = '', ctxText = '', idLabel = '';
+
+  if (type === 'order') {
+    s = SCENARIOS_ORDER.find(x => String(x.id) === idParam);
+    if (s) {
+      turns = [{ label: 'Câu mẫu ĐTV', text: s.sample }];
+      group = s.group;
+      title = s.title;
+      noteLine = 'Nghiệp vụ liên quan: ' + s.note;
+      ctxLabel = 'Bối cảnh tình huống';
+      ctxText = s.title;
+      idLabel = 'ĐH-' + String(s.id).padStart(2, '0');
+    }
+  } else if (type === 'complaint') {
+    s = SCENARIOS_COMPLAINT.find(x => x.id === idParam);
+    if (s) {
+      turns = s.steps;
+      group = s.group;
+      title = s.title;
+      noteLine = '';
+      ctxLabel = 'Nội dung sự việc';
+      ctxText = s.content;
+      idLabel = 'KN-' + s.id;
+    }
+  }
+
+  if (!s) {
+    document.querySelector('.container').innerHTML = '<p class="lead">Không tìm thấy tình huống này. <a href="mo-phong.html" style="color:var(--brand);font-weight:600">Quay về danh sách tình huống</a></p>';
+    document.getElementById('pageContainer').style.display = 'block';
+  } else {
+    document.title = `1166 Academy · ${idLabel} · Luyện tình huống`;
+    document.getElementById('scEyebrow').textContent = `TÌNH HUỐNG ${idLabel} · ${group}`;
+    document.getElementById('scTitle').textContent = title;
+    document.getElementById('scNote').textContent = noteLine;
+    document.getElementById('ctxLabel').textContent = ctxLabel;
+    document.getElementById('ctxText').textContent = ctxText;
+
+    const doneKey = type + '-' + idParam;
+    let turnIdx = 0;
+
+    function renderTurn() {
+      document.getElementById('turnBadge').textContent = `Lượt ${turnIdx + 1}/${turns.length}`;
+      document.getElementById('draftInput').value = '';
+      document.getElementById('draftBox').style.display = 'block';
+      document.getElementById('revealBtn').style.display = 'inline-flex';
+      document.getElementById('revealBtn').textContent = turns.length > 1 ? `Xem hướng xử lý bước ${turnIdx + 1}` : 'Xem câu mẫu ĐTV';
+      document.getElementById('nextTurnBtn').style.display = 'none';
+      document.getElementById('answerBox').style.display = 'none';
+      document.getElementById('doneSection').style.display = 'none';
+      updateDoneUI();
+    }
+
+    function updateDoneUI() {
+      const done = !!doneState[doneKey];
+      document.getElementById('doneToggle').classList.toggle('done', done);
+      document.getElementById('doneLabel').textContent = done ? 'Đã luyện tình huống này' : 'Đánh dấu đã luyện tình huống này';
+      document.getElementById('doneLabel').classList.toggle('done', false);
+    }
+
+    document.getElementById('revealBtn').addEventListener('click', () => {
+      const step = turns[turnIdx];
+      document.getElementById('answerLabel').textContent = step.label;
+      document.getElementById('answerText').textContent = step.text;
+      document.getElementById('answerBox').style.display = 'block';
+      document.getElementById('revealBtn').style.display = 'none';
+      if (turnIdx < turns.length - 1) {
+        document.getElementById('nextTurnBtn').style.display = 'inline-flex';
+      } else {
+        document.getElementById('doneSection').style.display = 'flex';
+      }
+    });
+
+    document.getElementById('nextTurnBtn').addEventListener('click', () => {
+      turnIdx++;
+      renderTurn();
+    });
+
+    document.getElementById('doneToggle').addEventListener('click', () => {
+      doneState[doneKey] = !doneState[doneKey];
+      localStorage.setItem(DONE_KEY, JSON.stringify(doneState));
+      updateDoneUI();
+    });
+
+    renderTurn();
+    document.getElementById('pageContainer').style.display = 'block';
+  }
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
