@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1166 Academy — N3 | VNPT</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#E30613;--red-dark:#B8000F;--red-light:#FEE8EA;
+  --navy:#1B2B4B;--blue:#0052A5;--blue-light:#EEF4FF;
+  --green:#00875A;--green-light:#E3FCEF;
+  --orange:#FF8B00;--orange-light:#FFF4E5;
+  --purple:#6554C0;--purple-light:#EAE6FF;
+  --gray-50:#F8F9FA;--gray-100:#F1F3F5;--gray-200:#E9ECEF;
+  --gray-400:#ADB5BD;--gray-600:#6C757D;--gray-700:#495057;
+  --gray-800:#343A40;--gray-900:#212529;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);
+  --shadow:0 4px 12px rgba(0,0,0,.08);
+  --shadow-md:0 10px 24px rgba(0,0,0,.10);
+  --r:12px;--r-sm:8px;--r-lg:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--gray-900);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200)}
+nav{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-icon{width:36px;height:36px;background:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px}
+.logo-name{font-size:15px;font-weight:700;color:var(--gray-900);line-height:1.1}
+.logo-tag{font-size:10px;color:var(--gray-600);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{display:block;padding:6px 11px;font-size:13.5px;font-weight:500;color:var(--gray-600);text-decoration:none;border-radius:6px;transition:.15s;white-space:nowrap}
+.nav-links a:hover{background:var(--gray-100);color:var(--gray-900)}
+.nav-links a.active{background:var(--red-light);color:var(--red)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-navy{background:var(--navy);color:#fff}
+.badge-gray{background:var(--gray-100);color:var(--gray-600)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.hamburger span{width:22px;height:2px;background:var(--gray-800);border-radius:2px;display:block}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+
+/* mobile nav */
+.m-nav{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:#fff;z-index:99;padding:16px 20px;overflow-y:auto}
+.m-nav.open{display:block}
+.m-nav ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+.m-nav ul a{display:block;padding:13px 16px;font-size:15px;font-weight:500;color:var(--gray-800);text-decoration:none;border-radius:8px}
+.m-nav ul a:hover{background:var(--gray-50)}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#2D4070 100%);color:#fff;padding:88px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:550px;height:550px;background:radial-gradient(circle,rgba(227,6,19,.18) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,82,165,.22) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.eyebrow-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:20px;font-size:12px;font-weight:500;color:rgba(255,255,255,.85);margin-bottom:24px}
+.hero h1{font-size:clamp(28px,5.5vw,54px);font-weight:800;line-height:1.12;margin-bottom:16px;letter-spacing:-0.5px}
+.hero h1 em{font-style:normal;color:#FF7A85}
+.hero p{font-size:17px;color:rgba(255,255,255,.72);margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto}
+.stats-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.stat-chip{display:flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:20px;backdrop-filter:blur(4px)}
+.stat-chip .n{font-size:19px;font-weight:800;color:#fff;line-height:1}
+.stat-chip .l{font-size:12px;color:rgba(255,255,255,.68);font-weight:400}
+.cta-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:.2s;white-space:nowrap;font-family:inherit}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px);box-shadow:0 8px 20px rgba(227,6,19,.35)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{background:rgba(255,255,255,.2);transform:translateY(-1px)}
+
+/* ── SECTION ── */
+.section{padding:72px 24px}
+.section-alt{background:var(--gray-50)}
+.s-head{max-width:1200px;margin:0 auto 44px}
+.s-eye{display:inline-block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.s-title{font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--gray-900);margin-bottom:10px;letter-spacing:-0.3px}
+.s-desc{font-size:15.5px;color:var(--gray-600);max-width:540px}
+.wrap{max-width:1200px;margin:0 auto}
+
+/* ── MODE CARDS ── */
+.modes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:20px}
+.mode-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;cursor:pointer;transition:.25s;position:relative;overflow:hidden;text-decoration:none;color:inherit}
+.mode-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0;opacity:0;transition:.2s}
+.mode-card:hover{border-color:transparent;box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.mode-card:hover::before{opacity:1}
+.mc-red::before{background:var(--red)}.mc-blue::before{background:var(--blue)}.mc-green::before{background:var(--green)}.mc-purple::before{background:var(--purple)}
+.mode-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;flex-shrink:0}
+.mc-red .mode-icon{background:var(--red-light)}.mc-blue .mode-icon{background:var(--blue-light)}.mc-green .mode-icon{background:var(--green-light)}.mc-purple .mode-icon{background:var(--purple-light)}
+.mode-title{font-size:17px;font-weight:700;margin-bottom:8px}
+.mode-desc{font-size:14px;color:var(--gray-600);line-height:1.55;flex:1;margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tag{padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600}
+.mc-red .tag{background:var(--red-light);color:var(--red)}.mc-blue .tag{background:var(--blue-light);color:var(--blue)}.mc-green .tag{background:var(--green-light);color:var(--green)}.mc-purple .tag{background:var(--purple-light);color:var(--purple)}
+.mode-link{font-size:14px;font-weight:600;display:flex;align-items:center;gap:4px;transition:gap .2s}
+.mc-red .mode-link{color:var(--red)}.mc-blue .mode-link{color:var(--blue)}.mc-green .mode-link{color:var(--green)}.mc-purple .mode-link{color:var(--purple)}
+.mode-card:hover .mode-link{gap:8px}
+
+/* ── TOPICS ── */
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r);padding:22px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:.2s}
+.topic-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:#dee2e6}
+.topic-num{width:44px;height:44px;border-radius:10px;background:var(--red-light);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.topic-body{flex:1;min-width:0}
+.topic-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.topic-sub{font-size:13px;color:var(--gray-600);line-height:1.45;margin-bottom:10px}
+.topic-tags{display:flex;flex-wrap:wrap;gap:5px}
+.topic-tag{padding:2px 8px;background:var(--gray-100);color:var(--gray-600);border-radius:4px;font-size:11px;font-weight:500}
+.topic-count{font-size:12px;color:var(--gray-400);font-weight:500;white-space:nowrap;padding-top:2px;flex-shrink:0}
+
+/* ── ROADMAP ── */
+.roadmap-inner{max-width:840px;margin:0 auto;position:relative}
+.roadmap-inner::before{content:'';position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:var(--gray-200)}
+.rm-item{display:flex;gap:22px;margin-bottom:14px;position:relative}
+.rm-dot{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:16px;position:relative;z-index:1;border:2px solid;transition:.2s}
+.rm-dot.done{background:var(--green);border-color:var(--green);color:#fff}
+.rm-dot.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 0 0 6px rgba(227,6,19,.1)}
+.rm-dot.todo{background:#fff;border-color:#dee2e6;color:var(--gray-400)}
+.rm-box{flex:1;background:#fff;border:1px solid var(--gray-200);border-radius:var(--r);padding:20px 24px}
+.rm-item.active .rm-box{border-color:var(--red);box-shadow:0 0 0 3px rgba(227,6,19,.06)}
+.rm-hd{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.rm-day{font-size:11px;color:var(--gray-400);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.rm-title{font-size:16px;font-weight:700;margin-bottom:5px}
+.rm-desc{font-size:14px;color:var(--gray-600);margin-bottom:12px}
+.rm-tasks{display:flex;flex-wrap:wrap;gap:6px}
+.rm-task{display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--gray-50);border-radius:6px;font-size:12px;color:var(--gray-700);font-weight:500}
+.rm-task.done{background:var(--green-light);color:var(--green)}
+.rm-task.active{background:var(--red-light);color:var(--red)}
+.rm-status{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.rm-status.done{background:var(--green-light);color:var(--green)}
+.rm-status.active{background:var(--red-light);color:var(--red)}
+.rm-status.todo{background:var(--gray-100);color:var(--gray-400)}
+
+/* ── BANNER ── */
+.banner{background:linear-gradient(135deg,var(--navy),#2A3F6F);color:#fff;padding:64px 24px;text-align:center}
+.banner-inner{max-width:580px;margin:0 auto}
+.banner h2{font-size:28px;font-weight:800;margin-bottom:12px;letter-spacing:-0.3px}
+.banner p{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:28px}
+.banner-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{background:var(--gray-900);color:var(--gray-400);padding:32px 24px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-icon{width:30px;height:30px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:11px}
+.footer-name{font-size:14px;font-weight:600;color:#fff}
+.footer-links{display:flex;gap:18px;list-style:none}
+.footer-links a{font-size:13px;color:var(--gray-400);text-decoration:none;transition:.15s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:12px;color:var(--gray-600)}
+
+/* ── MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;padding:24px;overflow-y:auto;backdrop-filter:blur(4px)}
+.modal-box{background:#fff;border-radius:var(--r-lg);max-width:600px;margin:0 auto;overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,.2)}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:500;z-index:999;transform:translateY(100px);opacity:0;transition:.3s;max-width:300px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
+/* ── UTIL ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .5s ease both}
+.fu2{animation:fadeUp .5s .1s ease both}
+.fu3{animation:fadeUp .5s .2s ease both}
+.fu4{animation:fadeUp .5s .3s ease both}
+
+@media(max-width:768px){
+  .hero{padding:60px 20px 56px}
+  .section{padding:52px 20px}
+  .roadmap-inner::before{left:21px}
+  .rm-dot{width:44px;height:44px;font-size:13px}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .footer-links{flex-wrap:wrap;gap:12px}
+  .rm-box{padding:16px 18px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-icon">N3</div>
+      <div>
+        <div class="logo-name">1166 Academy</div>
+        <div class="logo-tag">Học · Luyện · Trực ca tự tin</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Trang chủ</a></li>
+      <li><a href="#cam-nang">Cẩm nang</a></li>
+      <li><a href="#luyen-thi">Luyện thi</a></li>
+      <li><a href="#mo-phong">Mô phỏng</a></li>
+      <li><a href="#san-pham">Sản phẩm</a></li>
+      <li><a href="#tien-do">Tiến độ</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="badge badge-navy">Nội bộ VNPT</span>
+      <span class="badge badge-gray">v2.0</span>
+      <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="m-nav" id="mNav">
+  <ul>
+    <li><a href="#" onclick="closeNav()">🏠 Trang chủ</a></li>
+    <li><a href="#cam-nang" onclick="closeNav()">📖 Cẩm nang</a></li>
+    <li><a href="#luyen-thi" onclick="closeNav()">✏️ Luyện thi</a></li>
+    <li><a href="#mo-phong" onclick="closeNav()">📞 Mô phỏng cuộc gọi</a></li>
+    <li><a href="#san-pham" onclick="closeNav()">📦 Sản phẩm VNPT</a></li>
+    <li><a href="#tien-do" onclick="closeNav()">📊 Tiến độ của tôi</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow-chip fu">🎓 Tổng đài VNPT 18001166 — Nhóm N3</div>
+    <h1 class="fu2">Học <em>nhanh</em>. Luyện <em>đúng</em>.<br>Trực ca tự tin.</h1>
+    <p class="fu3">Nền tảng huấn luyện điện thoại viên Tổng đài VNPT 18001166 — tài liệu chuẩn, kịch bản thực tế, nghiệp vụ đầy đủ.</p>
+    <div class="stats-row fu3">
+      <div class="stat-chip"><span class="n">19</span><span class="l">tài liệu</span></div>
+      <div class="stat-chip"><span class="n">7</span><span class="l">chủ đề nghiệp vụ</span></div>
+      <div class="stat-chip"><span class="n">26</span><span class="l">kiểu yêu cầu</span></div>
+      <div class="stat-chip"><span class="n">7</span><span class="l">ngày onboard</span></div>
+    </div>
+    <div class="cta-row fu4">
+      <a href="#luyen-thi" class="btn btn-red">✏️ Bắt đầu luyện thi</a>
+      <a href="#cam-nang" class="btn btn-ghost">📖 Mở cẩm nang</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING MODES -->
+<section class="section" id="luyen-thi">
+  <div class="s-head">
+    <span class="s-eye">Chế độ học</span>
+    <h2 class="s-title">4 cách học hiệu quả</h2>
+    <p class="s-desc">Từ lý thuyết đến thực hành — chọn chế độ phù hợp với giai đoạn học của bạn.</p>
+  </div>
+  <div class="wrap modes-grid">
+    <div class="mode-card mc-red" onclick="toast('Luyện thi đang phát triển')">
+      <div class="mode-icon">✏️</div>
+      <div class="mode-title">Luyện thi trắc nghiệm</div>
+      <div class="mode-desc">Bộ câu hỏi bám sát 7 chủ đề nghiệp vụ N3, có timer và chấm điểm tức thì. Ôn luyện trước mỗi ca trực.</div>
+      <div class="tags"><span class="tag">100+ câu hỏi</span><span class="tag">Có đáp án</span><span class="tag">Timer</span></div>
+      <span class="mode-link">Vào luyện thi →</span>
+    </div>
+    <div class="mode-card mc-blue" id="mo-phong" onclick="toast('Mô phỏng đang phát triển')">
+      <div class="mode-icon">📞</div>
+      <div class="mode-title">Mô phỏng cuộc gọi</div>
+      <div class="mode-desc">15+ kịch bản thực tế từ khiếu nại cước đến lắp đặt Camera. Luyện kỹ năng giao tiếp và xử lý tình huống với KH.</div>
+      <div class="tags"><span class="tag">15 kịch bản</span><span class="tag">3 trục đánh giá</span><span class="tag">Câu mẫu</span></div>
+      <span class="mode-link">Vào mô phỏng →</span>
+    </div>
+    <div class="mode-card mc-green" id="cam-nang" onclick="toast('Cẩm nang đang phát triển')">
+      <div class="mode-icon">📖</div>
+      <div class="mode-title">Cẩm nang nghiệp vụ</div>
+      <div class="mode-desc">7 chủ đề nghiệp vụ đầy đủ: tiếp nhận cuộc gọi, đơn hàng, khiếu nại, GHTT, Camera, HĐĐT và CĐS.</div>
+      <div class="tags"><span class="tag">7 chủ đề</span><span class="tag">19 tài liệu</span><span class="tag">Cập nhật thường xuyên</span></div>
+      <span class="mode-link">Mở cẩm nang →</span>
+    </div>
+    <div class="mode-card mc-purple" id="san-pham" onclick="toast('Sản phẩm đang phát triển')">
+      <div class="mode-icon">📦</div>
+      <div class="mode-title">Showcase sản phẩm</div>
+      <div class="mode-desc">Thông tin chi tiết Camera VNPT (Thẻ nhớ 64GB, Cloud, Pack 03 CAM) và thiết bị Mesh Wifi để tư vấn KH.</div>
+      <div class="tags"><span class="tag">Camera IN/OUT</span><span class="tag">Cloud</span><span class="tag">Pack 03 CAM</span></div>
+      <span class="mode-link">Xem sản phẩm →</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section class="section section-alt">
+  <div class="s-head">
+    <span class="s-eye">Chương trình học</span>
+    <h2 class="s-title">7 chủ đề nghiệp vụ N3</h2>
+    <p class="s-desc">Toàn bộ kiến thức cần nắm trước khi trực ca đầu tiên — nhấn vào từng chủ đề để xem điểm chính.</p>
+  </div>
+  <div class="wrap topics-grid">
+    <div class="topic-card" onclick="openTopic(0)">
+      <div class="topic-num">01</div>
+      <div class="topic-body">
+        <div class="topic-title">Tiếp nhận cuộc gọi</div>
+        <div class="topic-sub">Kịch bản đồng kiểm TTTB theo NĐ 13 — bảo vệ dữ liệu cá nhân</div>
+        <div class="topic-tags"><span class="topic-tag">NĐ 13</span><span class="topic-tag">Đồng kiểm</span><span class="topic-tag">BRCĐ</span></div>
+      </div>
+      <div class="topic-count">1 TL</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(1)">
+      <div class="topic-num">02</div>
+      <div class="topic-body">
+        <div class="topic-title">Tiếp nhận đơn hàng</div>
+        <div class="topic-sub">26 kiểu yêu cầu, 6 nhóm nghiệp vụ, quy trình 7 bước OneBSS</div>
+        <div class="topic-tags"><span class="topic-tag">26 kiểu YC</span><span class="topic-tag">OneBSS</span><span class="topic-tag">Kịch bản</span></div>
+      </div>
+      <div class="topic-count">3 TL</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(2)">
+      <div class="topic-num">03</div>
+      <div class="topic-body">
+        <div class="topic-title">Tiếp nhận khiếu nại</div>
+        <div class="topic-sub">Phân loại KHCN/KHDN, thời gian SLA, chọn loại chủ đề KN</div>
+        <div class="topic-tags"><span class="topic-tag">KHCN/KHDN</span><span class="topic-tag">SLA</span><span class="topic-tag">GQKN</span></div>
+      </div>
+      <div class="topic-count">2 TL</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(3)">
+      <div class="topic-num">04</div>
+      <div class="topic-body">
+        <div class="topic-title">Gia hạn trả trước (GHTT)</div>
+        <div class="topic-sub">3 trường hợp gia hạn, gửi QR code, kịch bản phối hợp xử lý</div>
+        <div class="topic-tags"><span class="topic-tag">GHTT</span><span class="topic-tag">QR Code</span><span class="topic-tag">Trả trước</span></div>
+      </div>
+      <div class="topic-count">1 TL</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(4)">
+      <div class="topic-num">05</div>
+      <div class="topic-body">
+        <div class="topic-title">Lập hợp đồng Camera</div>
+        <div class="topic-sub">Camera Thẻ nhớ, Cloud, Pack CAM — quy trình 5 bước, Tab F2/F3</div>
+        <div class="topic-tags"><span class="topic-tag">Camera</span><span class="topic-tag">MegaEyes</span><span class="topic-tag">Cloud</span><span class="topic-tag">Pack CAM</span></div>
+      </div>
+      <div class="topic-count">6 TL</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(5)">
+      <div class="topic-num">06</div>
+      <div class="topic-body">
+        <div class="topic-title">Hóa đơn điện tử</div>
+        <div class="topic-sub">Thông báo cước, thanh toán online, tra cứu HĐĐT qua Fkey</div>
+        <div class="topic-tags"><span class="topic-tag">HĐĐT</span><span class="topic-tag">Fkey</span><span class="topic-tag">QR Code</span></div>
+      </div>
+      <div class="topic-count">1 TL</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(6)">
+      <div class="topic-num">07</div>
+      <div class="topic-body">
+        <div class="topic-title">Chuyển đổi số (CĐS)</div>
+        <div class="topic-sub">Xác minh TTTB, Zalo OA, chuẩn hóa thông tin, khóa máy, di dời</div>
+        <div class="topic-tags"><span class="topic-tag">Zalo OA</span><span class="topic-tag">Xác minh</span><span class="topic-tag">Di dời</span><span class="topic-tag">HCM</span></div>
+      </div>
+      <div class="topic-count">5 TL</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="section" id="tien-do">
+  <div class="s-head">
+    <span class="s-eye">Lộ trình onboard</span>
+    <h2 class="s-title">7 ngày làm quen nghiệp vụ</h2>
+    <p class="s-desc">Kế hoạch học từng ngày — từ kỹ năng cơ bản đến thành thạo trước ca trực đầu tiên.</p>
+  </div>
+  <div class="roadmap-inner">
+
+    <div class="rm-item">
+      <div class="rm-dot done">✓</div>
+      <div class="rm-box">
+        <div class="rm-hd">
+          <div><div class="rm-day">Ngày 1</div><div class="rm-title">Làm quen hệ thống & quy tắc cơ bản</div></div>
+          <span class="rm-status done">Hoàn thành</span>
+        </div>
+        <div class="rm-desc">Hiểu cấu trúc tổng đài 18001166, hệ thống OneBSS, cách chào hỏi và kết thúc cuộc gọi chuẩn.</div>
+        <div class="rm-tasks">
+          <span class="rm-task done">✓ Giới thiệu OneBSS</span>
+          <span class="rm-task done">✓ Quy tắc chào hỏi</span>
+          <span class="rm-task done">✓ Đồng kiểm TTTB (NĐ 13)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-item">
+      <div class="rm-dot done">✓</div>
+      <div class="rm-box">
+        <div class="rm-hd">
+          <div><div class="rm-day">Ngày 2</div><div class="rm-title">Tiếp nhận đơn hàng — 6 nhóm nghiệp vụ</div></div>
+          <span class="rm-status done">Hoàn thành</span>
+        </div>
+        <div class="rm-desc">Nắm 26 kiểu yêu cầu KH, cách phân loại và tạo phiếu 7 bước trên OneBSS.</div>
+        <div class="rm-tasks">
+          <span class="rm-task done">✓ 6 nhóm nghiệp vụ</span>
+          <span class="rm-task done">✓ 26 kiểu yêu cầu</span>
+          <span class="rm-task done">✓ Quy trình 7 bước</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-item active">
+      <div class="rm-dot active">3</div>
+      <div class="rm-box">
+        <div class="rm-hd">
+          <div><div class="rm-day">Ngày 3</div><div class="rm-title">Tiếp nhận khiếu nại & Phân loại KH</div></div>
+          <span class="rm-status active">Đang học</span>
+        </div>
+        <div class="rm-desc">Phân biệt KHCN/KHDN, thời gian SLA, chọn đúng loại chủ đề KN trên hệ thống.</div>
+        <div class="rm-tasks">
+          <span class="rm-task active">→ Phân loại KHCN/KHDN</span>
+          <span class="rm-task active">→ Thời gian SLA</span>
+          <span class="rm-task">Loại chủ đề KN</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-item">
+      <div class="rm-dot todo">4</div>
+      <div class="rm-box">
+        <div class="rm-hd">
+          <div><div class="rm-day">Ngày 4</div><div class="rm-title">Gia hạn trả trước & Hóa đơn điện tử</div></div>
+          <span class="rm-status todo">Chưa bắt đầu</span>
+        </div>
+        <div class="rm-desc">Xử lý 3 trường hợp GHTT, gửi QR code KH, hướng dẫn tải HĐĐT qua Fkey.</div>
+        <div class="rm-tasks">
+          <span class="rm-task">3 TH gia hạn trả trước</span>
+          <span class="rm-task">Tra cứu QR Code</span>
+          <span class="rm-task">HĐĐT & Fkey</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-item">
+      <div class="rm-dot todo">5</div>
+      <div class="rm-box">
+        <div class="rm-hd">
+          <div><div class="rm-day">Ngày 5</div><div class="rm-title">CĐS — Xác minh TTTB & Zalo OA</div></div>
+          <span class="rm-status todo">Chưa bắt đầu</span>
+        </div>
+        <div class="rm-desc">Quy trình xác minh chủ thuê bao, hướng dẫn KH quan tâm Zalo OA VNPT HCM.</div>
+        <div class="rm-tasks">
+          <span class="rm-task">Xác minh TTTB</span>
+          <span class="rm-task">Zalo OA VNPT HCM</span>
+          <span class="rm-task">Chuẩn hóa thông tin</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-item">
+      <div class="rm-dot todo">6</div>
+      <div class="rm-box">
+        <div class="rm-hd">
+          <div><div class="rm-day">Ngày 6</div><div class="rm-title">Khóa máy & Di dời địa chỉ</div></div>
+          <span class="rm-status todo">Chưa bắt đầu</span>
+        </div>
+        <div class="rm-desc">Xử lý PAKH khóa máy do nợ cước/GHTT, nhập phiếu di dời, hướng dẫn giấy tờ KH.</div>
+        <div class="rm-tasks">
+          <span class="rm-task">Mở chêm tạm 24h</span>
+          <span class="rm-task">Tiếp nhận di dời</span>
+          <span class="rm-task">Giấy tờ KH</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-item">
+      <div class="rm-dot todo">7</div>
+      <div class="rm-box">
+        <div class="rm-hd">
+          <div><div class="rm-day">Ngày 7</div><div class="rm-title">Lập HĐ Camera & Tổng ôn</div></div>
+          <span class="rm-status todo">Chưa bắt đầu</span>
+        </div>
+        <div class="rm-desc">Camera Thẻ nhớ, Cloud, Pack 03 CAM — Tab F2/F3 OneBSS. Tổng ôn và mô phỏng cuộc gọi hoàn chỉnh.</div>
+        <div class="rm-tasks">
+          <span class="rm-task">LHĐ Camera IN/OUT</span>
+          <span class="rm-task">Pack 03 CAM</span>
+          <span class="rm-task">Mô phỏng tổng hợp</span>
+          <span class="rm-task">🎯 Sẵn sàng trực ca</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BANNER -->
+<section class="banner">
+  <div class="banner-inner">
+    <h2>Sẵn sàng trực ca chưa? 🎯</h2>
+    <p>Ôn lại 7 chủ đề nghiệp vụ, luyện thêm kịch bản mô phỏng và kiểm tra kiến thức trước khi bắt đầu ca.</p>
+    <div class="banner-btns">
+      <a href="#luyen-thi" class="btn btn-red">✏️ Luyện thi ngay</a>
+      <a href="#cam-nang" class="btn btn-ghost">📖 Đọc cẩm nang</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-icon">N3</div>
+      <span class="footer-name">1166 Academy</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">Trang chủ</a></li>
+      <li><a href="#cam-nang">Cẩm nang</a></li>
+      <li><a href="#luyen-thi">Luyện thi</a></li>
+      <li><a href="#mo-phong">Mô phỏng</a></li>
+      <li><a href="#san-pham">Sản phẩm</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 VNPT 18001166 N3 · Tài liệu nội bộ</div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" onclick="closeModal(event)">
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
+<script>
+const TOPICS = [
+  {
+    num:'01', title:'Tiếp nhận cuộc gọi', color:'#E30613',
+    sub:'Kịch bản đồng kiểm TTTB theo NĐ 13',
+    files:['TL Kịch bản đồng kiểm TTTB BRCĐ theo NĐ 13'],
+    pts:[
+      'Phạm vi: Đài HTDV BRCĐ & đối tác tổng đài 18001166',
+      'TH 1 — Có popup TTTB: ĐTV chủ động đọc thông tin để đồng kiểm',
+      'TH 2 — Không có popup: Đề nghị KH cung cấp thông tin thuê bao',
+      '⚠ TUYỆT ĐỐI KHÔNG đồng kiểm cùng lúc Tên Thuê bao + Địa chỉ',
+      'ĐTV lặp lại tên + địa chỉ sau khi KH cung cấp = xác nhận, không vi phạm NĐ 13',
+    ],
+    tags:['NĐ 13','Đồng kiểm','BRCĐ','Dữ liệu cá nhân'],
+  },
+  {
+    num:'02', title:'Tiếp nhận đơn hàng', color:'#0052A5',
+    sub:'26 kiểu yêu cầu · 6 nhóm nghiệp vụ · 7 bước OneBSS',
+    files:['AI MENTOR — Cây thư mục tiếp nhận đơn hàng','Cẩm nang nghiệp vụ OneBSS','Tình huống tiếp nhận đơn hàng (giao tiếp)'],
+    pts:[
+      'Thu thập: Account, Tên KH, Địa chỉ, Loại DV, Loại hình, Ghi chú, SĐT & tên liên hệ',
+      'Nhóm 1: Tư vấn & Lắp mới | Nhóm 2: Thay đổi HĐ & Gói cước',
+      'Nhóm 3: Di chuyển & Tạm dừng | Nhóm 4: Thanh lý & Khôi phục',
+      'Nhóm 5: Tài chính & Thiết bị | Nhóm 6: Phản ánh, CSKH & HĐ',
+      '⚠ Bước 4 (chọn Dịch vụ / Loại hình / Kiểu yêu cầu) là bước quan trọng nhất',
+    ],
+    tags:['OneBSS','26 kiểu','6 nhóm','7 bước'],
+  },
+  {
+    num:'03', title:'Tiếp nhận khiếu nại', color:'#00875A',
+    sub:'Phân loại KHCN/KHDN · SLA · Loại chủ đề KN',
+    files:['Tiếp nhận khiếu nại (nghiệp vụ)','Tình huống KH khiếu nại'],
+    pts:[
+      'KHCN nhóm A (≥ 2tr/tháng hoặc cơ quan TW): xử lý ≤ 7 ngày',
+      'KHCN nhóm B (100K – 2tr/tháng): xử lý ≤ 10 ngày',
+      'Tạo phiếu PAKN & chuyển xử lý: ≤ 20 phút với MỌI nhóm KH',
+      '⚠ TUYỆT ĐỐI KHÔNG chọn "Khiếu nại KHDN" cho KHCN và ngược lại',
+      '5 loại KN KHDN: cước, chất lượng mạng, CSKH, nhân viên, thiết bị',
+    ],
+    tags:['KHCN/KHDN','SLA','GQKN','Phân loại'],
+  },
+  {
+    num:'04', title:'Gia hạn trả trước (GHTT)', color:'#FF8B00',
+    sub:'3 trường hợp · Kịch bản mời KH · Phối hợp xử lý',
+    files:['Kịch bản GHTT BRCĐ VNPT'],
+    pts:[
+      'TH 1 — KH yêu cầu link QR: OneBSS → cột XEM QRCODE → gửi Zalo/SMS',
+      'TH 2 — KH không đồng ý gia hạn: Nhánh 1 chuyển Nhánh 3',
+      'TH 3 — KH đồng ý gia hạn tiếp: ĐTV N1/N2/N3 lập HĐ đặt cọc chu kỳ mới',
+      'Chính chủ + khác ca/nhánh: chuyển thông tin qua Trưởng ca phối hợp',
+      'Không chính chủ: yêu cầu chính chủ gọi lại hoặc liên hệ đầu mối T/TP',
+    ],
+    tags:['GHTT','Trả trước','QR Code','Nhánh 1/2/3'],
+  },
+  {
+    num:'05', title:'Lập hợp đồng Camera', color:'#6554C0',
+    sub:'Camera Thẻ nhớ · Cloud · Pack 03 CAM · Quy trình 5 bước',
+    files:['LHĐ Camera Thẻ Nhớ 64GB','LHĐ Camera Thẻ Nhớ 64GB TTN','LHĐ Camera Cloud','LHĐ Gói Pack CAM','Cẩm nang LHĐ Camera VNPT','Tình huống LHĐ Camera'],
+    pts:[
+      'Quy trình: Lập HĐ → Thanh toán → Giao VTT thi công → Kích hoạt → Hoàn thiện hồ sơ',
+      'F2: Ngành nghề = "Hoạt động DV khác", bắt buộc tích nhận GBCQ qua SMS/Email',
+      'F3: Kiểu yêu cầu luôn là "Lắp mới Megaeyes trên Fiber có sẵn"',
+      '⚠ KH trả sau (hàng tháng): TUYỆT ĐỐI KHÔNG tích ô Trả trước ở F3',
+      'Mã OTP từ App OneHome chỉ có hiệu lực 5 phút — nhập ngay',
+    ],
+    tags:['Camera','MegaEyes','Cloud','OneBSS F2/F3'],
+  },
+  {
+    num:'06', title:'Hóa đơn điện tử', color:'#E30613',
+    sub:'Thông báo cước · Thanh toán online · Tra cứu HĐĐT',
+    files:['TL Hóa đơn điện tử BRCĐ VNPT'],
+    pts:[
+      'VNPT gửi thông báo cước qua: SMS, Email, App My VNPT, VNPT Money, App OTT',
+      'Thanh toán online: QR Code / Link oneS / Internet Banking / Momo, ZaloPay, VNPAY',
+      'Chuyển khoản: nội dung = "Mã TT_Kỳ cước"',
+      'Tải HĐĐT cách 1: Đăng nhập web bằng Mã thanh toán (= tên tài khoản)',
+      'Tải HĐĐT cách 2: Dùng mã Fkey từ thông báo phát hành hoặc cuối tờ hóa đơn',
+    ],
+    tags:['HĐĐT','Fkey','QR Code','Mã TT'],
+  },
+  {
+    num:'07', title:'Chuyển đổi số (CĐS)', color:'#1B2B4B',
+    sub:'Xác minh TTTB · Zalo OA · Chuẩn hóa · Khóa máy · Di dời',
+    files:['Xác minh thông tin chủ thuê bao','Hướng dẫn KH quan tâm Zalo OA','Chuẩn hóa thông tin thuê bao','Kịch bản xử lý PAKH khóa máy (GHTT/nợ cước)','Kịch bản xử lý KH yêu cầu di dời địa chỉ'],
+    pts:[
+      'Xác minh TTTB bắt buộc với MỌI PAKH trừ báo hỏng đường truyền',
+      'KH cá nhân: CCCD + Ngày cấp + (Ngày sinh / SĐT / Mã TT) — theo thứ tự ưu tiên',
+      'Zalo OA "VNPT – Vinaphone TP HCM": chuẩn hóa TT, gửi chứng từ, tư vấn GHTT',
+      '⚠ Chuẩn hóa thông tin: CHỈ triển khai tại TP.HCM — thực hiện sau khi giải quyết xong YC chính',
+      'Mở chêm tạm 24h: App My VNPT → Viễn thông → Đăng ký sử dụng thêm 24h',
+    ],
+    tags:['Xác minh','Zalo OA','CĐS','Di dời','HCM'],
+  },
+];
+
+function openTopic(i) {
+  const t = TOPICS[i];
+  document.getElementById('modal-box').innerHTML = `
+    <div style="background:${t.color};padding:28px 28px 20px;color:#fff">
+      <div style="font-size:11px;opacity:.7;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Chủ đề ${t.num}</div>
+      <div style="font-size:21px;font-weight:800;line-height:1.2;margin-bottom:6px">${t.title}</div>
+      <div style="font-size:14px;opacity:.8">${t.sub}</div>
+    </div>
+    <div style="padding:24px 28px">
+      <div style="font-size:11px;font-weight:700;color:#6C757D;letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Điểm chính cần nhớ</div>
+      ${t.pts.map(p=>`<div style="display:flex;gap:10px;margin-bottom:9px"><span style="color:${t.color};font-weight:700;flex-shrink:0">•</span><span style="font-size:14px;color:#343A40;line-height:1.5">${p}</span></div>`).join('')}
+      <div style="margin:20px 0 16px">
+        <div style="font-size:11px;font-weight:700;color:#6C757D;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Tài liệu (${t.files.length} file)</div>
+        ${t.files.map(f=>`<div style="padding:8px 12px;background:#F8F9FA;border-radius:6px;font-size:13px;color:#495057;margin-bottom:5px">📄 ${f}</div>`).join('')}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
+        ${t.tags.map(tg=>`<span style="padding:3px 10px;background:#F1F3F5;border-radius:4px;font-size:12px;font-weight:500;color:#495057">${tg}</span>`).join('')}
+      </div>
+      <button onclick="closeModalBtn()" style="width:100%;padding:13px;background:${t.color};color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">Đóng</button>
+    </div>`;
+  document.getElementById('modal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e){ if(e.target===document.getElementById('modal')){closeModalBtn()} }
+function closeModalBtn(){ document.getElementById('modal').style.display='none'; document.body.style.overflow=''; }
+
+let _tt;
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent='⚙️ '+msg;
+  el.style.transform='translateY(0)';el.style.opacity='1';
+  clearTimeout(_tt);
+  _tt=setTimeout(()=>{el.style.transform='translateY(100px)';el.style.opacity='0';},2600);
+}
+
+function toggleNav(){ document.getElementById('mNav').classList.toggle('open'); }
+function closeNav(){ document.getElementById('mNav').classList.remove('open'); }
+
+// Scroll-reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'} });
+},{threshold:.08});
+document.querySelectorAll('.topic-card,.rm-item,.mode-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(18px)';
+  el.style.transition='opacity .4s ease, transform .4s ease';
+  io.observe(el);
+});
+
+// Nav active on scroll
+const sections = ['luyen-thi','cam-nang','mo-phong','san-pham','tien-do'];
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY + 80;
+  sections.forEach(id=>{
+    const el = document.getElementById(id);
+    const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+    if(!el||!link) return;
+    if(y >= el.offsetTop && y < el.offsetTop + el.offsetHeight){
+      document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
